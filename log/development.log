@@ -1604,3 +1604,55 @@ Processing by Api::ContactsController#first_contact_display as HTML
 Completed 200 OK in 9ms (Views: 4.8ms | ActiveRecord: 0.5ms | Allocations: 1267)
 
 
+Started GET "/api/second_contact_url" for ::1 at 2019-11-05 10:36:57 -0600
+Processing by Api::ContactsController#display_second_contact as HTML
+  [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" ORDER BY "contact_lists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `second_contact_call'
+  Rendering api/contacts/second_contact.json.jb
+  Rendered api/contacts/second_contact.json.jb (Duration: 0.3ms | Allocations: 62)
+Completed 200 OK in 14ms (Views: 5.0ms | ActiveRecord: 0.7ms | Allocations: 6863)
+
+
+  [1m[36mContactList Load (0.5ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" ORDER BY "contact_lists"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContactList Update (0.8ms)[0m  [1m[33mUPDATE "contact_lists" SET "first_name" = $1, "last_name" = $2, "email" = $3, "phone_number" = $4, "updated_at" = $5 WHERE "contact_lists"."id" = $6[0m  [["first_name", "Jon"], ["last_name", "Snow"], ["email", "lord_commander@nightswatch.org"], ["phone_number", "(123) 456-7890"], ["updated_at", "2019-11-05 16:40:39.654663"], ["id", 1]]
+  [1m[35m (13.0ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/first_contact_url" for ::1 at 2019-11-05 10:41:00 -0600
+Processing by Api::ContactsController#display_first_contact as HTML
+  [1m[36mContactList Load (1.8ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" ORDER BY "contact_lists"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `first_contact_call'
+  Rendering api/contacts/first_contact.json.jb
+  Rendered api/contacts/first_contact.json.jb (Duration: 0.5ms | Allocations: 59)
+Completed 200 OK in 9ms (Views: 2.3ms | ActiveRecord: 1.8ms | Allocations: 1271)
+
+
+  [1m[36mContactList Load (0.5ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" ORDER BY "contact_lists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContactList Update (0.6ms)[0m  [1m[33mUPDATE "contact_lists" SET "first_name" = $1, "last_name" = $2, "email" = $3, "phone_number" = $4, "updated_at" = $5 WHERE "contact_lists"."id" = $6[0m  [["first_name", "Bilbo"], ["last_name", "Baggins"], ["email", "bilbo@shire.com"], ["phone_number", "(908) 765-4321"], ["updated_at", "2019-11-05 16:42:59.261020"], ["id", 2]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mContactList Load (0.6ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" ORDER BY "contact_lists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 2]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContactList Update (0.4ms)[0m  [1m[33mUPDATE "contact_lists" SET "first_name" = $1, "last_name" = $2, "email" = $3, "phone_number" = $4, "updated_at" = $5 WHERE "contact_lists"."id" = $6[0m  [["first_name", "James"], ["last_name", "Kirk"], ["email", "jamestkirk@starfleet.org"], ["phone_number", "(567) 890-1234"], ["updated_at", "2019-11-05 16:45:30.913745"], ["id", 3]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/first_contact_url" for ::1 at 2019-11-05 10:45:51 -0600
+Processing by Api::ContactsController#display_first_contact as HTML
+  [1m[36mContactList Load (0.6ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" ORDER BY "contact_lists"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `first_contact_call'
+  Rendering api/contacts/first_contact.json.jb
+  Rendered api/contacts/first_contact.json.jb (Duration: 0.1ms | Allocations: 4)
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.6ms | Allocations: 1079)
+
+
+Started GET "/api/show_all_contact_url" for ::1 at 2019-11-05 10:46:02 -0600
+Processing by Api::ContactsController#show_all_contact_method as HTML
+  [1m[36mContactList Load (0.7ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" ORDER BY "contact_lists"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:11:in `first_contact_call'
+  [1m[36mContactList Load (0.5ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" ORDER BY "contact_lists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  ↳ app/controllers/application_controller.rb:25:in `second_contact_call'
+  [1m[36mContactList Load (0.5ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" ORDER BY "contact_lists"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 2]]
+  ↳ app/controllers/application_controller.rb:39:in `third_contact_call'
+  Rendering api/contacts/show_all_contact.json.jb
+  Rendered api/contacts/show_all_contact.json.jb (Duration: 2.2ms | Allocations: 59)
+Completed 200 OK in 16ms (Views: 5.9ms | ActiveRecord: 1.7ms | Allocations: 2829)
+
+

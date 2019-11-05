@@ -29,11 +29,11 @@ class ApplicationController < ActionController::Base
     return @second_contact
   end
 
-  # def display_second_contact
-  #   second_contact_call
+  def display_second_contact
+    second_contact_call
 
-  #   render "second_contact.json.jb"
-  # end
+    render "second_contact.json.jb"
+  end
 
   def third_contact_call
     db_extract = ContactList.third
@@ -43,11 +43,11 @@ class ApplicationController < ActionController::Base
     return @third_contact
   end
 
-  # def display_third_contact
-  #   third_contact_call
+  def display_third_contact
+    third_contact_call
 
-  #   render "third_contact.json.jb"
-  # end
+    render "third_contact.json.jb"
+  end
 
   def show_all_contact_method
     first_contact_call
