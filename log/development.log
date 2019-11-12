@@ -2021,3 +2021,53 @@ Processing by Api::ContactsController#index as HTML
 Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.4ms | Allocations: 3170)
 
 
+Started GET "/api/contacts" for ::1 at 2019-11-12 10:41:15 -0600
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ContactsController#index as */*
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (1.0ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists"[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 8.4ms | Allocations: 1908)
+  Rendered api/contacts/index.json.jb (Duration: 55.1ms | Allocations: 7759)
+Completed 500 Internal Server Error in 74ms (ActiveRecord: 5.9ms | Allocations: 10284)
+
+
+  
+ActionView::Template::Error (undefined method `friendly_updated_at' for nil:NilClass):
+     5:   phone_number: contact.phone_number,
+     6:   formatted: {
+     7:     full_name: contact.full_name,
+     8:     updated_at: @contact.friendly_updated_at,
+     9:     japan_number: @contact.japan_phone_number,
+    10:   },
+    11: }
+  
+app/views/api/contacts/_contact.json.jb:8
+app/views/api/contacts/index.json.jb:2
+app/views/api/contacts/index.json.jb:1:in `map'
+app/views/api/contacts/index.json.jb:1
+app/controllers/api/contacts_controller.rb:4:in `index'
+Started GET "/api/contacts" for ::1 at 2019-11-12 10:41:46 -0600
+Processing by Api::ContactsController#index as */*
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists"[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 1.4ms | Allocations: 106)
+  Rendered api/contacts/_contact.json.jb (Duration: 0.2ms | Allocations: 32)
+  Rendered api/contacts/_contact.json.jb (Duration: 0.1ms | Allocations: 32)
+  Rendered api/contacts/_contact.json.jb (Duration: 0.2ms | Allocations: 31)
+  Rendered api/contacts/index.json.jb (Duration: 5.8ms | Allocations: 1400)
+Completed 200 OK in 26ms (Views: 24.8ms | ActiveRecord: 0.4ms | Allocations: 6101)
+
+
+Started GET "/api/contacts/4" for ::1 at 2019-11-12 10:41:52 -0600
+Processing by Api::ContactsController#show as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mContactList Load (0.3ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE "contact_lists"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/contacts_controller.rb:18:in `show'
+  Rendering api/contacts/show.json.jb
+  Rendered api/contacts/_contact.json.jb (Duration: 0.1ms | Allocations: 32)
+  Rendered api/contacts/show.json.jb (Duration: 1.9ms | Allocations: 167)
+Completed 200 OK in 9ms (Views: 3.4ms | ActiveRecord: 0.5ms | Allocations: 1810)
+
+
