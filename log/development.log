@@ -1943,3 +1943,81 @@ Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.3ms | Allocations: 1718)
   [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" ORDER BY "contact_lists"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" ORDER BY "contact_lists"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" ORDER BY "contact_lists"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/api/contacts/1" for ::1 at 2019-11-11 21:21:43 -0600
+  [1m[35m (14.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ContactsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mContactList Load (2.3ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE "contact_lists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/api/contacts_controller.rb:18:in `show'
+  Rendering api/contacts/show.json.jb
+  Rendered api/contacts/_contact.json.jb (Duration: 1.7ms | Allocations: 92)
+  Rendered api/contacts/show.json.jb (Duration: 8.1ms | Allocations: 490)
+Completed 200 OK in 73ms (Views: 38.9ms | ActiveRecord: 9.0ms | Allocations: 9080)
+
+
+Started GET "/api/contacts/" for ::1 at 2019-11-11 21:22:05 -0600
+Processing by Api::ContactsController#index as HTML
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.3ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/contacts_controller.rb:4:in `index'
+  [1m[36mCACHE ContactList Load (0.0ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/contacts_controller.rb:4:in `index'
+  [1m[36mCACHE ContactList Load (0.0ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/contacts_controller.rb:4:in `index'
+  [1m[36mCACHE ContactList Load (0.0ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/contacts_controller.rb:4:in `index'
+  [1m[36mCACHE ContactList Load (0.0ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/contacts_controller.rb:4:in `index'
+  [1m[36mCACHE ContactList Load (0.1ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/contacts_controller.rb:4:in `index'
+  [1m[36mCACHE ContactList Load (0.0ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/contacts_controller.rb:4:in `index'
+  [1m[36mCACHE ContactList Load (0.0ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/controllers/api/contacts_controller.rb:4:in `index'
+  Rendered api/contacts/index.json.jb (Duration: 532.3ms | Allocations: 154197)
+Completed 500 Internal Server Error in 551ms (ActiveRecord: 0.6ms | Allocations: 155679)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `contact' for #<#<Class:0x00007fa32ab66a28>:0x00007fa32ab64660>
+Did you mean?  concat
+               @contacts):
+    1: render partial: "contact.json.jb", locals: { contact: contact }
+  
+app/views/api/contacts/index.json.jb:1
+app/controllers/api/contacts_controller.rb:4:in `index'
+Started GET "/api/contacts/" for ::1 at 2019-11-11 21:22:24 -0600
+Processing by Api::ContactsController#index as HTML
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.5ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" LIMIT $1[0m  [["LIMIT", 11]]
+  ↳ app/views/api/contacts/index.json.jb:1
+  Rendered api/contacts/_contact.json.jb (Duration: 17.2ms | Allocations: 7597)
+  Rendered api/contacts/index.json.jb (Duration: 19.0ms | Allocations: 7878)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.5ms | Allocations: 9389)
+
+
+  
+ActionView::Template::Error (undefined method `first_name' for #<ContactList::ActiveRecord_Relation:0x00007fa32acb28f0>
+Did you mean?  first!):
+    1: {
+    2:   first_name: contact.first_name,
+    3:   last_name: contact.last_name,
+    4:   email: contact.email,
+    5:   phone_number: contact.phone_number,
+  
+app/views/api/contacts/_contact.json.jb:2
+app/views/api/contacts/index.json.jb:1
+app/controllers/api/contacts_controller.rb:4:in `index'
+Started GET "/api/contacts/" for ::1 at 2019-11-11 21:23:37 -0600
+Processing by Api::ContactsController#index as HTML
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists"[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 0.6ms | Allocations: 84)
+  Rendered api/contacts/_contact.json.jb (Duration: 0.1ms | Allocations: 17)
+  Rendered api/contacts/_contact.json.jb (Duration: 0.1ms | Allocations: 17)
+  Rendered api/contacts/_contact.json.jb (Duration: 0.0ms | Allocations: 16)
+  Rendered api/contacts/index.json.jb (Duration: 5.6ms | Allocations: 1279)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.4ms | Allocations: 3170)
+
+
