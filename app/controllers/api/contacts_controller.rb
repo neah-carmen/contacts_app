@@ -5,7 +5,7 @@ class Api::ContactsController < ApplicationController
   end
 
   def create
-    @contact = ContactList.create(
+    @contact = ContactList.new(
       first_name: params[:first_name],
       middle_name: params[:middle_name],
       last_name: params[:last_name],
@@ -13,7 +13,11 @@ class Api::ContactsController < ApplicationController
       email: params[:email],
       phone_number: params[:phone_number],
     )
-    render "show.json.jb"
+    if @contact.save
+      render "show.json.jb"
+    else
+      render json: { errors: @contact.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -29,8 +33,11 @@ class Api::ContactsController < ApplicationController
     @contact.bio = params[:bio] || @contact.bio
     @contact.email = params[:email] || @contact.email
     @contact.phone_number = params[:phone_number] || @contact.phone_number
-    @contact.save
-    render "show.json.jb"
+    if @contact.save
+      render "show.json.jb"
+    else
+      render json: { errors: @contact.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def destroy
