@@ -2527,3 +2527,141 @@ Processing by Api::ContactsController#index as */*
 Completed 200 OK in 41ms (Views: 14.9ms | ActiveRecord: 22.2ms | Allocations: 7689)
 
 
+Started GET "/api/contacts?search=james" for ::1 at 2019-11-14 18:37:07 -0600
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"james"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (8.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE (first_name ILIKE '%james%' OR middle_name = '%james%' OR last_name ='%james%')[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 2.2ms | Allocations: 124)
+  Rendered api/contacts/index.json.jb (Duration: 47.0ms | Allocations: 7247)
+Completed 200 OK in 76ms (Views: 55.0ms | ActiveRecord: 12.8ms | Allocations: 10586)
+
+
+Started GET "/api/contacts?search=baggins" for ::1 at 2019-11-14 18:37:14 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"baggins"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE (first_name ILIKE '%baggins%' OR middle_name = '%baggins%' OR last_name ='%baggins%')[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/index.json.jb (Duration: 2.6ms | Allocations: 628)
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.4ms | Allocations: 1012)
+
+
+Started GET "/api/contacts?search=took" for ::1 at 2019-11-14 18:37:21 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"took"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE (first_name ILIKE '%took%' OR middle_name = '%took%' OR last_name ='%took%')[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/index.json.jb (Duration: 2.0ms | Allocations: 628)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 1011)
+
+
+Started GET "/api/contacts?search=took" for ::1 at 2019-11-14 18:38:14 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"took"}
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 1103)
+
+
+  
+ActiveRecord::PreparedStatementInvalid (wrong number of bind variables (1 for 3) in: first_name ILIKE ? OR middle_name = ? OR last_name =?):
+  
+app/controllers/api/contacts_controller.rb:6:in `index'
+Started GET "/api/contacts?search=james" for ::1 at 2019-11-14 18:38:38 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"james"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE (first_name ILIKE '%james%' OR middle_name = '%james%' OR last_name ='%james%')[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 0.2ms | Allocations: 44)
+  Rendered api/contacts/index.json.jb (Duration: 37.6ms | Allocations: 6357)
+Completed 200 OK in 43ms (Views: 34.1ms | ActiveRecord: 4.7ms | Allocations: 7798)
+
+
+Started GET "/api/contacts?search=bilbo" for ::1 at 2019-11-14 18:38:42 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"bilbo"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE (first_name ILIKE '%bilbo%' OR middle_name = '%bilbo%' OR last_name ='%bilbo%')[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 0.1ms | Allocations: 37)
+  Rendered api/contacts/index.json.jb (Duration: 1.9ms | Allocations: 743)
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.4ms | Allocations: 1269)
+
+
+Started GET "/api/contacts?search=jon" for ::1 at 2019-11-14 18:38:46 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"jon"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE (first_name ILIKE '%jon%' OR middle_name = '%jon%' OR last_name ='%jon%')[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 0.1ms | Allocations: 38)
+  Rendered api/contacts/index.json.jb (Duration: 2.2ms | Allocations: 752)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.4ms | Allocations: 1285)
+
+
+Started GET "/api/contacts?search=snow" for ::1 at 2019-11-14 18:38:50 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"snow"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE (first_name ILIKE '%snow%' OR middle_name = '%snow%' OR last_name ='%snow%')[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/index.json.jb (Duration: 1.6ms | Allocations: 626)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.4ms | Allocations: 1002)
+
+
+Started GET "/api/contacts?search=sam" for ::1 at 2019-11-14 18:39:20 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"sam"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.9ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE (first_name ILIKE '%sam%' OR middle_name = '%sam%' OR last_name ='%sam%')[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/index.json.jb (Duration: 2.2ms | Allocations: 620)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.9ms | Allocations: 996)
+
+
+Started GET "/api/contacts?search=James" for ::1 at 2019-11-14 18:39:25 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"James"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE (first_name ILIKE '%James%' OR middle_name = '%James%' OR last_name ='%James%')[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 0.1ms | Allocations: 37)
+  Rendered api/contacts/index.json.jb (Duration: 1.8ms | Allocations: 743)
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 1269)
+
+
+Started GET "/api/contacts?search=Kirk" for ::1 at 2019-11-14 18:39:38 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"Kirk"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE (first_name ILIKE '%Kirk%' OR middle_name = '%Kirk%' OR last_name ='%Kirk%')[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/index.json.jb (Duration: 1.5ms | Allocations: 620)
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.4ms | Allocations: 996)
+
+
+Started GET "/api/contacts?search=Kirk" for ::1 at 2019-11-14 18:40:08 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"Kirk"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.4ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE (first_name ILIKE '%Kirk%' OR middle_name ILIKE '%Kirk%' OR last_name ILIKE '%Kirk%')[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 0.2ms | Allocations: 44)
+  Rendered api/contacts/index.json.jb (Duration: 14.9ms | Allocations: 6251)
+Completed 200 OK in 20ms (Views: 12.3ms | ActiveRecord: 3.8ms | Allocations: 7600)
+
+
+Started GET "/api/contacts?search=Tib" for ::1 at 2019-11-14 18:40:13 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"Tib"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.3ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE (first_name ILIKE '%Tib%' OR middle_name ILIKE '%Tib%' OR last_name ILIKE '%Tib%')[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 0.1ms | Allocations: 37)
+  Rendered api/contacts/index.json.jb (Duration: 2.0ms | Allocations: 743)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 1269)
+
+

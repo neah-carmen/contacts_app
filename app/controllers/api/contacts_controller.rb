@@ -3,7 +3,7 @@ class Api::ContactsController < ApplicationController
     @contacts = ContactList.all
 
     if params[:search]
-      @contacts = @contacts.where("first_name ILIKE ?", "%#{params[:search]}%")
+      @contacts = @contacts.where("first_name ILIKE ? OR middle_name ILIKE ? OR last_name ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
     end
 
     render "index.json.jb"
