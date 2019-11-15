@@ -1,6 +1,11 @@
 class Api::ContactsController < ApplicationController
   def index
     @contacts = ContactList.all
+
+    if params[:search]
+      @contacts = @contacts.where("first_name ILIKE ?", "%#{params[:search]}%")
+    end
+
     render "index.json.jb"
   end
 

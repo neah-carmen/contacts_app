@@ -2480,3 +2480,50 @@ Migrating to AddBioToContactList (20191113022311)
   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
   [1m[36mContactList Create (0.9ms)[0m  [1m[32mINSERT INTO "contact_lists" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at", "middle_name", "bio") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Jon"], ["last_name", "Snow"], ["email", "lordcommander@nightswatch.org"], ["phone_number", "998-300-8800"], ["created_at", "2019-11-14 00:48:01.487035"], ["updated_at", "2019-11-14 00:48:01.487035"], ["middle_name", "Rhaegar"], ["bio", "Lord Commander of the Night's Watch"]]
   [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/contacts/search=yo" for ::1 at 2019-11-14 18:32:11 -0600
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ContactsController#show as */*
+  Parameters: {"id"=>"search=yo"}
+  [1m[36mContactList Load (3.3ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE "contact_lists"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/contacts_controller.rb:29:in `show'
+  Rendering api/contacts/show.json.jb
+  Rendered api/contacts/_contact.json.jb (Duration: 6.4ms | Allocations: 1861)
+  Rendered api/contacts/show.json.jb (Duration: 12.3ms | Allocations: 2294)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 12.7ms | Allocations: 6738)
+
+
+  
+ActionView::Template::Error (undefined method `first_name' for nil:NilClass):
+    1: {
+    2:   first_name: contact.first_name,
+    3:   middle_name: contact.middle_name,
+    4:   last_name: contact.last_name,
+    5:   bio: contact.bio,
+  
+app/views/api/contacts/_contact.json.jb:2
+app/views/api/contacts/show.json.jb:1
+app/controllers/api/contacts_controller.rb:30:in `show'
+Started GET "/api/contacts?search=yo" for ::1 at 2019-11-14 18:32:38 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"yo"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (2.8ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists"[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 1.4ms | Allocations: 49)
+  Rendered api/contacts/_contact.json.jb (Duration: 0.2ms | Allocations: 36)
+  Rendered api/contacts/_contact.json.jb (Duration: 0.1ms | Allocations: 37)
+  Rendered api/contacts/index.json.jb (Duration: 51.3ms | Allocations: 6406)
+Completed 200 OK in 68ms (Views: 32.3ms | ActiveRecord: 35.3ms | Allocations: 10027)
+
+
+Started GET "/api/contacts?search=Bilbo" for ::1 at 2019-11-14 18:34:01 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"Bilbo"}
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (17.0ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE (first_name ILIKE '%Bilbo%')[0m
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 0.2ms | Allocations: 44)
+  Rendered api/contacts/index.json.jb (Duration: 35.7ms | Allocations: 6279)
+Completed 200 OK in 41ms (Views: 14.9ms | ActiveRecord: 22.2ms | Allocations: 7689)
+
+
