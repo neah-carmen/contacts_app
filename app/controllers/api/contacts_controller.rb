@@ -1,7 +1,7 @@
 class Api::ContactsController < ApplicationController
   def index
     if current_user
-      @contacts = current_user.contact_lists
+      @contacts = current_user.contacts
 
       if params[:search]
         @contacts = @contacts.where("first_name ILIKE ? OR middle_name ILIKE ? OR last_name ILIKE ?", "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
@@ -14,7 +14,7 @@ class Api::ContactsController < ApplicationController
   end
 
   def create
-    @contact = ContactList.new(
+    @contact = Contact.new(
       first_name: params[:first_name],
       middle_name: params[:middle_name],
       last_name: params[:last_name],
@@ -31,12 +31,12 @@ class Api::ContactsController < ApplicationController
   end
 
   def show
-    @contact = ContactList.find_by(id: params[:id])
+    @contact = Contact.find_by(id: params[:id])
     render "show.json.jb"
   end
 
   def update
-    @contact = ContactList.find_by(id: params[:id])
+    @contact = Contact.find_by(id: params[:id])
     @contact.first_name = params[:first_name] || @contact.first_name
     @contact.middle_name = params[:middle_name] || @contact.middle_name
     @contact.last_name = params[:last_name] || @contact.last_name
@@ -51,7 +51,7 @@ class Api::ContactsController < ApplicationController
   end
 
   def destroy
-    @contact = ContactList.find_by(id: params[:id])
+    @contact = Contact.find_by(id: params[:id])
     @contact.destroy
     render json: { message: "Product successfully deleted." }
   end

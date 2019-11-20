@@ -2949,3 +2949,225 @@ Can't verify CSRF token authenticity.
 Completed 200 OK in 85ms (Views: 16.9ms | ActiveRecord: 28.2ms | Allocations: 19326)
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5466155535110801265)[0m
+  [1m[35m (8.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateContacts (20191120215923)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (40.3ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" bigserial primary key, "first_name" character varying, "middle_name" character varying, "last_name" character varying, "email" character varying, "phone_number" character varying, "bio" text, "user_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191120215923"]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5466155535110801265)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (4.1ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "middle_name", "last_name", "email", "phone_number", "bio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Bilbo"], ["middle_name", "Took"], ["last_name", "Baggins"], ["email", "bilbo@shire.org"], ["phone_number", "111-111-1111"], ["bio", "Respectable hobbit from the Shire"], ["user_id", 1], ["created_at", "2019-11-20 22:03:20.228952"], ["updated_at", "2019-11-20 22:03:20.228952"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "middle_name", "last_name", "email", "phone_number", "bio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "James"], ["middle_name", "Tiberius"], ["last_name", "Kirk"], ["email", "jtkirk@federation.org"], ["phone_number", "211-919-1701"], ["bio", "Captain of the Federation Starship Enterprise"], ["user_id", 2], ["created_at", "2019-11-20 22:03:20.244879"], ["updated_at", "2019-11-20 22:03:20.244879"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "middle_name", "last_name", "email", "phone_number", "bio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Jon"], ["middle_name", "Rhaegar"], ["last_name", "Snow"], ["email", "lordcommander@nightswatch.org"], ["phone_number", "998-300-8800"], ["bio", "Lord Commander of the Night's Watch"], ["user_id", 2], ["created_at", "2019-11-20 22:03:20.253648"], ["updated_at", "2019-11-20 22:03:20.253648"]]
+  [1m[35m (9.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "middle_name", "last_name", "email", "phone_number", "bio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Trevor"], ["middle_name", "Ralph"], ["last_name", "Belmont"], ["email", "t_belmont@email.com"], ["phone_number", "1234567890"], ["bio", "Vampire slayer, heir to the Belmont family"], ["user_id", 1], ["created_at", "2019-11-20 22:03:20.268017"], ["updated_at", "2019-11-20 22:03:20.268017"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (7611.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "contacts_app_development"[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (7838.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "contacts_app_development"[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (7675.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "contacts_app_development"[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (222.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "contacts_app_development"[0m
+  [1m[35m (228.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "contacts_app_test"[0m
+  [1m[35m (634.0ms)[0m  [1m[35mCREATE DATABASE "contacts_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (398.5ms)[0m  [1m[35mCREATE DATABASE "contacts_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5466155535110801265)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddMiddleNameToContactList (20191113021619)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "contact_lists" ADD "middle_name" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5466155535110801265)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (217.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "contacts_app_development"[0m
+  [1m[35m (210.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "contacts_app_test"[0m
+  [1m[35m (451.6ms)[0m  [1m[35mCREATE DATABASE "contacts_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (460.7ms)[0m  [1m[35mCREATE DATABASE "contacts_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5466155535110801265)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20191120004131)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "email" character varying, "password_digest" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191120004131"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateContacts (20191120215923)
+  [1m[35m (6.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.3ms)[0m  [1m[35mCREATE TABLE "contacts" ("id" bigserial primary key, "first_name" character varying, "middle_name" character varying, "last_name" character varying, "email" character varying, "phone_number" character varying, "bio" text, "user_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191120215923"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-11-20 22:06:16.174699"], ["updated_at", "2019-11-20 22:06:16.174699"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5466155535110801265)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (0.9ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "middle_name", "last_name", "email", "phone_number", "bio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Bilbo"], ["middle_name", "Took"], ["last_name", "Baggins"], ["email", "bilbo@shire.org"], ["phone_number", "111-111-1111"], ["bio", "Respectable hobbit from the Shire"], ["user_id", 1], ["created_at", "2019-11-20 22:06:16.295110"], ["updated_at", "2019-11-20 22:06:16.295110"]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (0.4ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "middle_name", "last_name", "email", "phone_number", "bio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "James"], ["middle_name", "Tiberius"], ["last_name", "Kirk"], ["email", "jtkirk@federation.org"], ["phone_number", "211-919-1701"], ["bio", "Captain of the Federation Starship Enterprise"], ["user_id", 2], ["created_at", "2019-11-20 22:06:16.301358"], ["updated_at", "2019-11-20 22:06:16.301358"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (0.3ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "middle_name", "last_name", "email", "phone_number", "bio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Jon"], ["middle_name", "Rhaegar"], ["last_name", "Snow"], ["email", "lordcommander@nightswatch.org"], ["phone_number", "998-300-8800"], ["bio", "Lord Commander of the Night's Watch"], ["user_id", 2], ["created_at", "2019-11-20 22:06:16.306513"], ["updated_at", "2019-11-20 22:06:16.306513"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mContact Create (0.7ms)[0m  [1m[32mINSERT INTO "contacts" ("first_name", "middle_name", "last_name", "email", "phone_number", "bio", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Trevor"], ["middle_name", "Ralph"], ["last_name", "Belmont"], ["email", "t_belmont@email.com"], ["phone_number", "1234567890"], ["bio", "Vampire slayer, heir to the Belmont family"], ["user_id", 1], ["created_at", "2019-11-20 22:06:16.311172"], ["updated_at", "2019-11-20 22:06:16.311172"]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/sessions" for ::1 at 2019-11-20 16:14:10 -0600
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#create as */*
+  Parameters: {"email"=>"test@email.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (6.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:3:in `create'
+Completed 401 Unauthorized in 39ms (Views: 2.4ms | ActiveRecord: 8.8ms | Allocations: 3195)
+
+
+Started POST "/api/users" for ::1 at 2019-11-20 16:14:34 -0600
+Processing by Api::UsersController#create as */*
+  Parameters: {"username"=>"Test", "email"=>"test@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[36mUser Create (2.8ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Test"], ["email", "test@email.com"], ["password_digest", "$2a$12$Xam3ouGSlV1oA.p2k7NhQO6xMHYRCpkegVvRt3xJYu0SYkaVaBZBC"], ["created_at", "2019-11-20 22:14:34.667905"], ["updated_at", "2019-11-20 22:14:34.667905"]]
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+Completed 201 Created in 318ms (Views: 1.4ms | ActiveRecord: 9.0ms | Allocations: 7435)
+
+
+Started POST "/api/users" for ::1 at 2019-11-20 16:14:43 -0600
+Processing by Api::UsersController#create as */*
+  Parameters: {"username"=>"User", "email"=>"user@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[36mUser Create (0.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "User"], ["email", "user@email.com"], ["password_digest", "$2a$12$DMY086j7Z8/cFtmDL/4SReA1fTj/610Z9sWqIfqb1LU/3tG1y4VAy"], ["created_at", "2019-11-20 22:14:44.059638"], ["updated_at", "2019-11-20 22:14:44.059638"]]
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+Completed 201 Created in 302ms (Views: 0.2ms | ActiveRecord: 2.8ms | Allocations: 3439)
+
+
+Started POST "/api/sessions" for ::1 at 2019-11-20 16:14:47 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"email"=>"test@email.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:3:in `create'
+Completed 201 Created in 304ms (Views: 0.2ms | ActiveRecord: 0.5ms | Allocations: 1373)
+
+
+Started GET "/api/contacts" for ::1 at 2019-11-20 16:15:04 -0600
+Processing by Api::ContactsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.3ms | Allocations: 4654)
+
+
+  
+NoMethodError (undefined method `contacts' for #<User:0x00007ff9f3335e38>
+Did you mean?  contact_lists):
+  
+app/controllers/api/contacts_controller.rb:4:in `index'
+Started GET "/api/contacts/4" for ::1 at 2019-11-20 16:15:34 -0600
+Processing by Api::ContactsController#show as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/contacts_controller.rb:34:in `show'
+  Rendering api/contacts/show.json.jb
+  Rendered api/contacts/_contact.json.jb (Duration: 3.0ms | Allocations: 119)
+  Rendered api/contacts/show.json.jb (Duration: 5.6ms | Allocations: 433)
+Completed 200 OK in 57ms (Views: 20.5ms | ActiveRecord: 3.9ms | Allocations: 12946)
+
+
+  [1m[36mContact Load (0.5ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mContact Load (0.9ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts"[0m
+Started GET "/api/contacts" for ::1 at 2019-11-20 16:17:24 -0600
+Processing by Api::ContactsController#index as */*
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 4.1ms | Allocations: 9440)
+
+
+  
+NoMethodError (undefined method `contact' for #<User:0x00007ff9f6f83160>
+Did you mean?  contact_lists):
+  
+app/controllers/api/contacts_controller.rb:4:in `index'
+Started GET "/api/contacts?search=Kirk" for ::1 at 2019-11-20 16:18:57 -0600
+Processing by Api::ContactsController#index as */*
+  Parameters: {"search"=>"Kirk"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 3.9ms | Allocations: 9456)
+
+
+  
+NoMethodError (undefined method `contact' for #<User:0x00007ff9f81498e0>
+Did you mean?  contact_lists):
+  
+app/controllers/api/contacts_controller.rb:4:in `index'
+Started GET "/api/contacts" for ::1 at 2019-11-20 16:20:01 -0600
+Processing by Api::ContactsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  Rendering api/contacts/index.json.jb
+  [1m[36mContact Load (0.3ms)[0m  [1m[34mSELECT "contacts".* FROM "contacts" WHERE "contacts"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 0.2ms | Allocations: 45)
+  Rendered api/contacts/_contact.json.jb (Duration: 0.1ms | Allocations: 37)
+  Rendered api/contacts/index.json.jb (Duration: 25.6ms | Allocations: 8515)
+Completed 200 OK in 66ms (Views: 25.1ms | ActiveRecord: 6.9ms | Allocations: 17872)
+
+
