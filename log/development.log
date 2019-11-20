@@ -2685,3 +2685,149 @@ Migrating to CreateUsers (20191120004131)
   [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   [1m[36mContactList Load (0.6ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" LIMIT $1[0m  [["LIMIT", 11]]
   [1m[36mContactList Load (0.5ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" ORDER BY "contact_lists"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5466155535110801265)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddUserIdToContactList (20191120005306)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contact_lists" ADD "user_id" integer[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191120005306"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(5466155535110801265)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+Started POST "/api/users" for ::1 at 2019-11-19 18:57:16 -0600
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::UsersController#create as */*
+  Parameters: {"username"=>"User", "email"=>"user@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[36mUser Create (16.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "User"], ["email", "user@email.com"], ["password_digest", "$2a$12$5.OJwetG/3919mk025NN9e4f65vC8eaPPnQNm7yod0sDj26EYAbry"], ["created_at", "2019-11-20 00:57:16.649959"], ["updated_at", "2019-11-20 00:57:16.649959"]]
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[35m (8.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+Completed 201 Created in 391ms (Views: 19.0ms | ActiveRecord: 31.9ms | Allocations: 8808)
+
+
+Started POST "/api/users" for ::1 at 2019-11-19 18:57:26 -0600
+Processing by Api::UsersController#create as */*
+  Parameters: {"username"=>"Test", "email"=>"test@email.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "Test"], ["email", "test@email.com"], ["password_digest", "$2a$12$a89U3xnM49ueItafufUDi.zPc5R39RBXhXsFnA5DSq9ytO1g1M2rq"], ["created_at", "2019-11-20 00:57:27.042996"], ["updated_at", "2019-11-20 00:57:27.042996"]]
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:9:in `create'
+Completed 201 Created in 310ms (Views: 0.7ms | ActiveRecord: 7.8ms | Allocations: 4278)
+
+
+Started POST "/api/sessions" for ::1 at 2019-11-19 18:59:36 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"email"=>"user", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:3:in `create'
+Completed 401 Unauthorized in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 881)
+
+
+Started POST "/api/sessions" for ::1 at 2019-11-19 18:59:44 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"email"=>"user@email.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:3:in `create'
+Completed 201 Created in 305ms (Views: 0.8ms | ActiveRecord: 0.4ms | Allocations: 1373)
+
+
+Started GET "/api/contacts" for ::1 at 2019-11-19 19:03:49 -0600
+Processing by Api::ContactsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 4.6ms | Allocations: 8795)
+
+
+  
+NoMethodError (undefined method `contact_list' for #<User:0x00007f8bc47c9000>):
+  
+app/controllers/api/contacts_controller.rb:4:in `index'
+Started GET "/api/contacts" for ::1 at 2019-11-19 19:04:06 -0600
+Processing by Api::ContactsController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 3.8ms | Allocations: 8933)
+
+
+  
+NoMethodError (undefined method `contactlist' for #<User:0x00007f8bc5888468>):
+  
+app/controllers/api/contacts_controller.rb:4:in `index'
+Started GET "/api/contacts" for ::1 at 2019-11-19 19:04:14 -0600
+Processing by Api::ContactsController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 5.3ms | Allocations: 8791)
+
+
+  
+NoMethodError (undefined method `ContactList' for #<User:0x00007f8bc0d45c58>):
+  
+app/controllers/api/contacts_controller.rb:4:in `index'
+Started GET "/api/contacts" for ::1 at 2019-11-19 19:04:26 -0600
+Processing by Api::ContactsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 3.6ms | Allocations: 8788)
+
+
+  
+NoMethodError (undefined method `contacts' for #<User:0x00007f8bc47b2da0>):
+  
+app/controllers/api/contacts_controller.rb:4:in `index'
+Started GET "/api/contacts" for ::1 at 2019-11-19 19:07:06 -0600
+Processing by Api::ContactsController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 5.2ms | Allocations: 10125)
+
+
+  
+NoMethodError (undefined method `contacts' for #<User:0x00007f8bc59d09d8>
+Did you mean?  contact_lists):
+  
+app/controllers/api/contacts_controller.rb:4:in `index'
+Started GET "/api/contacts" for ::1 at 2019-11-19 19:07:19 -0600
+Processing by Api::ContactsController#index as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  Rendering api/contacts/index.json.jb
+  [1m[36mContactList Load (0.5ms)[0m  [1m[34mSELECT "contact_lists".* FROM "contact_lists" WHERE "contact_lists"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/api/contacts/index.json.jb:1:in `map'
+  Rendered api/contacts/_contact.json.jb (Duration: 2.2ms | Allocations: 119)
+  Rendered api/contacts/_contact.json.jb (Duration: 0.2ms | Allocations: 36)
+  Rendered api/contacts/index.json.jb (Duration: 30.1ms | Allocations: 8724)
+Completed 200 OK in 82ms (Views: 33.5ms | ActiveRecord: 7.8ms | Allocations: 22160)
+
+
