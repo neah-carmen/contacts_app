@@ -2831,3 +2831,121 @@ Processing by Api::ContactsController#index as */*
 Completed 200 OK in 82ms (Views: 33.5ms | ActiveRecord: 7.8ms | Allocations: 22160)
 
 
+Started POST "/api/contacts" for ::1 at 2019-11-19 19:12:10 -0600
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::ContactsController#create as */*
+  Parameters: {"first_name"=>"Trevor", "last_name"=>"Belmont", "phone_number"=>"1234567890", "email"=>"t_belmont@email.com"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 422 Unprocessable Entity in 58ms (Views: 0.2ms | ActiveRecord: 9.1ms | Allocations: 19240)
+
+
+Started POST "/api/contacts" for ::1 at 2019-11-19 19:13:45 -0600
+Processing by Api::ContactsController#create as */*
+  Parameters: {"first_name"=>"Trevor", "last_name"=>"Belmont", "phone_number"=>"1234567890", "email"=>"t_belmont@email.com"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 422 Unprocessable Entity in 4ms (Views: 0.2ms | ActiveRecord: 0.4ms | Allocations: 1905)
+
+
+Started POST "/api/contacts" for ::1 at 2019-11-19 19:14:38 -0600
+Processing by Api::ContactsController#create as */*
+  Parameters: {"first_name"=>"Trevor", "last_name"=>"Belmont", "phone_number"=>"1234567890", "email"=>"t_belmont@email.com"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 422 Unprocessable Entity in 7ms (Views: 0.4ms | ActiveRecord: 0.4ms | Allocations: 1801)
+
+
+Started POST "/api/contacts" for ::1 at 2019-11-19 19:16:29 -0600
+Processing by Api::ContactsController#create as */*
+  Parameters: {"first_name"=>"Trevor", "last_name"=>"Belmont", "phone_number"=>"1234567890", "email"=>"t_belmont@email.com"}
+Can't verify CSRF token authenticity.
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 979)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/api/contacts_controller.rb:24:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/api/sessions" for ::1 at 2019-11-19 19:18:49 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"email"=>"test@email.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:3:in `create'
+Completed 201 Created in 293ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1035)
+
+
+Started POST "/api/contacts" for ::1 at 2019-11-19 19:19:13 -0600
+Processing by Api::ContactsController#create as */*
+  Parameters: {"first_name"=>"Trevor", "last_name"=>"Belmont", "phone_number"=>"1234567890", "email"=>"t_belmont@email.com"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 422 Unprocessable Entity in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1811)
+
+
+Started POST "/api/contacts" for ::1 at 2019-11-19 19:19:44 -0600
+Processing by Api::ContactsController#create as */*
+  Parameters: {"first_name"=>"Trevor", "last_name"=>"Belmont", "phone_number"=>"1234567890", "email"=>"t_belmont@email.com", "middle_name"=>"J", "bio"=>"Vampire slayer, heir to the Belmont family"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 422 Unprocessable Entity in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms | Allocations: 1799)
+
+
+Started POST "/api/sessions" for ::1 at 2019-11-19 19:21:40 -0600
+Processing by Api::SessionsController#create as */*
+  Parameters: {"email"=>"test@email.com", "password"=>"[FILTERED]"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@email.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/sessions_controller.rb:3:in `create'
+Completed 201 Created in 332ms (Views: 0.3ms | ActiveRecord: 0.3ms | Allocations: 872)
+
+
+Started POST "/api/contacts" for ::1 at 2019-11-19 19:21:54 -0600
+Processing by Api::ContactsController#create as */*
+  Parameters: {"first_name"=>"Trevor", "last_name"=>"Belmont", "phone_number"=>"1234567890", "email"=>"t_belmont@email.com", "middle_name"=>"J", "bio"=>"Vampire slayer, heir to the Belmont family"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 422 Unprocessable Entity in 3ms (Views: 0.4ms | ActiveRecord: 0.3ms | Allocations: 1783)
+
+
+Started POST "/api/contacts" for ::1 at 2019-11-19 19:23:27 -0600
+Processing by Api::ContactsController#create as */*
+  Parameters: {"first_name"=>"Trevor", "last_name"=>"Belmont", "phone_number"=>"1234567890", "email"=>"t_belmont@email.com", "middle_name"=>"J", "bio"=>"Vampire slayer, heir to the Belmont family"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+Completed 422 Unprocessable Entity in 38ms (Views: 0.2ms | ActiveRecord: 10.7ms | Allocations: 16516)
+
+
+Started POST "/api/contacts" for ::1 at 2019-11-19 19:25:07 -0600
+Processing by Api::ContactsController#create as */*
+  Parameters: {"first_name"=>"Trevor", "last_name"=>"Belmont", "phone_number"=>"1234567890", "email"=>"t_belmont@email.com", "middle_name"=>"J", "bio"=>"Vampire slayer, heir to the Belmont family"}
+Can't verify CSRF token authenticity.
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:15:in `current_user'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/contacts_controller.rb:26:in `create'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/contacts_controller.rb:26:in `create'
+  [1m[36mContactList Create (13.6ms)[0m  [1m[32mINSERT INTO "contact_lists" ("first_name", "last_name", "email", "phone_number", "created_at", "updated_at", "middle_name", "bio", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Trevor"], ["last_name", "Belmont"], ["email", "t_belmont@email.com"], ["phone_number", "1234567890"], ["created_at", "2019-11-20 01:25:07.591691"], ["updated_at", "2019-11-20 01:25:07.591691"], ["middle_name", "J"], ["bio", "Vampire slayer, heir to the Belmont family"], ["user_id", 2]]
+  ↳ app/controllers/api/contacts_controller.rb:26:in `create'
+  [1m[35m (7.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/contacts_controller.rb:26:in `create'
+  Rendering api/contacts/show.json.jb
+  Rendered api/contacts/_contact.json.jb (Duration: 2.4ms | Allocations: 109)
+  Rendered api/contacts/show.json.jb (Duration: 6.4ms | Allocations: 424)
+Completed 200 OK in 85ms (Views: 16.9ms | ActiveRecord: 28.2ms | Allocations: 19326)
+
+
